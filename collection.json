@@ -56,7 +56,7 @@
             "project=CMIP6",
             "institute=MPI-M"
         ],
-        "platform":  [
+        "ttttt":  [
             "storage=swift",
             "format=zarr"
         ],
