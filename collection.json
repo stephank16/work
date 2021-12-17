@@ -56,10 +56,10 @@
             "project=CMIP6",
             "institute=MPI-M"
         ],
-        "platform":  [
-            "project=CMIP6",
-            "institute=MPI-M"
-        ],
+        "platform":   {
+            "min": 56.3,
+            "max": 65.1
+        },
         "view:off_nadir": {
             "min": 0.2,
             "max": 27.3
