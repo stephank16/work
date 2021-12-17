@@ -1,0 +1,72 @@
+@startuml
+
+package "Search / Index layer" {
+    [WDCC index] -- solr_wdcc
+    [Freva index] -- solr_freva
+    [Freva index] <-- [index publisher]
+    [DKRZ ESGF index] -- solr_esgf
+    [DKRZ ESGF index] -up- esgf_search_API
+    [DKRZ ESGF index] <-- [index publisher]
+    [OAI]
+}
+
+
+
+node "DM external Data" {
+  
+  cloud {
+  [DKRZ SWIFT] - S3
+}
+
+ cloud {
+  [ESGF] - solr
+}
+  [DKRZ Proj data]
+  [Model Run] 
+}
+
+package "DM internal (Meta-)Data" {
+ [DM data pool] 
+ [HSM]  
+ [fdb5]
+ database "CERA" {
+  folder "REL DB schema" {
+    [CERA X]
+  }
+  frame "Ingest" {
+    [QA]
+  }
+   
+}
+
+}
+
+
+package "DM internal generic catalog layer" {
+
+database "Catalog Man DB" {
+  folder "man tools" {
+    [crawler / mapper] 
+    [index publisher]
+    [Catalog Gen] -- Catalog_API
+  } 
+} 
+
+
+[Model Run] --> [fdb5]
+[DKRZ Proj data] --> [DM data pool]
+[CERA X] --> [WDCC index]
+[crawler / mapper] <-- [DM data pool]
+[crawler / mapper] <-- [fdb5]
+[crawler / mapper] <-- [CERA X]
+[crawler / mapper] <-- [HSM]
+[ESGF] -> [DM data pool]
+[DM data pool] <--> [DKRZ SWIFT]
+[Catalog_API] <-- [index publisher]
+
+
+
+
+
+
+@enduml
