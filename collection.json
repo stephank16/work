@@ -1,7 +1,7 @@
 {
-    "id": "planet-disaster-data",
-    "stac_version": "1.0.0-beta.2",
-    "description": "[Planet Disaster Data](https://www.planet.com/disasterdata/) makes imagery available directly to the public, volunteers, humanitarian organizations, and other coordinating bodies in support of the International Charter for Space and Major Disasters. Data is released for individual disaster events, providing a 30 day window pre- and post-disaster. Imagery is provided under Creative Commons licenses, free of charge, with either CC-BY-SA or CC-BY-NC.",
+    "id": "CMIP6_climate_model_data_colldkrz1",
+    "stac_version": "1.0.0",
+    "description": "Analysis ready CMIP6 climate model data hosted at DKRZ (cloud storage)",
     "links": [
         {
             "rel": "root",
@@ -10,35 +10,35 @@
         },
         {
             "rel": "child",
-            "href": "./hurricane-harvey/catalog.json",
+            "href": "./cmip6-mpi/catalog.json",
             "title": "Hurricane Harvey"
         },
         {
             "rel": "self",
-            "href": "https://raw.githubusercontent.com/cholmes/pdd-stac/beta2/disasters/collection.json",
+            "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
             "type": "application/json"
         }
     ],
-    "title": "Planet Disaster Data",
+    "title": "CMIP6 Data",
     "keywords": [
-        "disaster",
+        "CMIP6",
         "open"
     ],
     "providers": [
         {
-            "name": "Planet",
-            "description": "Contact Planet at https://www.planet.com/contact-sales/",
+            "name": "DKRZ",
+            "description": "Contact Planet DKRZ ESGF portal at https://esgf-data.dkrz.de",
             "roles": [
-                "producer",
+                "distributor",
                 "processor"
             ],
-            "url": "http://planet.com"
+            "url": "https://esgf-data.dkrz.de"
         },
         {
-            "name": "Planet Disaster Team <disaster-team@planet.com>",
-            "description": "The Planet Disaster Data Team has released this data as CC-BY-SA-4.0 to help disaster response",
+            "name": "MPI-M team ... ",
+            "description": "The MPI-M modeling group has produced this contribution to CMIP6",
             "roles": [
-                "licensor"
+                "producer"
             ],
             "url": "https://www.planet.com/disasterdata/"
         },
