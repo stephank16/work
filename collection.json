@@ -11,7 +11,7 @@
         {
             "rel": "child",
             "href": "./cmip6-mpi/catalog.json",
-            "title": "Hurricane Harvey"
+            "title": "MPI-M CMIP6 test1"
         },
         {
             "rel": "self",
@@ -53,11 +53,11 @@
     ],
     "summaries": {
         "facets": [
-            "skysat",
+            "trullala",
             "planetscope"
         ],
         "platform": [
-            "SS02",
+            "trallalal",
             "SSC1",
             "101c"
         ],
