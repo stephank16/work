@@ -2,23 +2,6 @@
     "id": "CMIP6_colldkrz2",
     "stac_version": "1.0.0",
     "description": "Analysis ready CMIP6 climate model data hosted at DKRZ (cloud storage)",
-    "links": [
-        {
-            "rel": "root",
-            "href": "./collection.json",
-            "type": "application/json"
-        },
-        {
-            "rel": "child",
-            "href": "./cmip6-mpi/catalog.json",
-            "title": "MPI-M CMIP6 test1"
-        },
-        {
-            "rel": "self",
-            "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
-            "type": "application/json"
-        }
-    ],
     "title": "CMIP6 Data",
     "keywords": [
         "CMIP6",
@@ -119,5 +102,22 @@
             ]
         }
     },
+ "links": [
+        {
+            "rel": "root",
+            "href": "./collection.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "child",
+            "href": "./cmip6-mpi/catalog.json",
+            "title": "MPI-M CMIP6 test1"
+        },
+        {
+            "rel": "self",
+            "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
+            "type": "application/json"
+        }
+    ],    
     "license": "CC-BY-SA-4.0"
 }
