@@ -1,5 +1,5 @@
 {
-    "id": "1subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
+    "id": "2subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
     "stac_extensions": [
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
@@ -129,7 +129,11 @@
           "href": "./simple-item.json",
           "type": "application/geo+json",
           "title": "Simple Item"
-         }
+         },
+      {
+      "rel": "collection",
+      "href": "https://landsat-stac.s3.amazonaws.com/landsat-8-l1/catalog.json"
+    }
     ],    
     "license": "CC-BY-SA-4.0"
 }
