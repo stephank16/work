@@ -1,5 +1,5 @@
 {
-    "id": "5doi:10.22033/ESGF/CMIP6.6595",
+    "id": "subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
     "stac_extensions": [
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
@@ -95,8 +95,8 @@
         "temporal": {
             "interval": [
                 [
-                    "2017-08-28T10:00:00-08:00",
-                    null
+                      "1980-01-01T00:00:00Z",
+                      "2009-12-31T23:59:59Z"
                 ]
             ]
         }
