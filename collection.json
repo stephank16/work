@@ -1,7 +1,7 @@
 {
-    "id": "CMIP6_colldkrz4",
+    "id": "1doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
-    "description": "Analysis ready CMIP6 climate model data hosted at DKRZ (cloud storage)",
+    "description": "Coupled Model Intercomparison Project Phase 6 (CMIP6) data sets. These data includes all datasets published for 'CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.historical' according to the Data Reference Syntax defined as 'mip_era.activity_id.institution_id.source_id.experiment_id.member_id.table_id.variable_id.grid_label.version'.",
     "title": "CMIP6 Data",
     "keywords": [
         "CMIP6",
@@ -39,9 +39,7 @@
             "project=CMIP6",
             "institute=MPI-M"
         ],
-        "ttttt":  [
-            "storage=swift",
-            "format=zarr"
+        "landing_page":  ["https://cera-www.dkrz.de/WDCC/ui/cerasearch/cmip6?input=CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.historical"
         ],
          "test":  [
             "storage=swift",
@@ -69,11 +67,11 @@
         },
          "eo:bands": [
         {
+          "mip_era": "CMIP6",
+          "Activity_id": "CMIP6,
           "Institution_ID": "MPI-M",
-          "Source_ID": "MPI-ESM1-2LR",
-          "Activity": "CMIP6",
-          "Experiment_ID": "1ptCO2",  
-          "Realm": "atmos"
+          "Source_ID": "MPI-ESM1-2-LR
+          "Experiment_ID": "historical" 
         },
         {
           "name": "B2",
