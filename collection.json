@@ -66,9 +66,9 @@
          "eo:bands": [
         {
           "mip_era": "CMIP6",
-          "Activity_id": "CMIP6,
+          "Activity_id": "CMIP6",
           "Institution_ID": "MPI-M",
-          "Source_ID": "MPI-ESM1-2-LR
+          "Source_ID": "MPI-ESM1-2-LR",
           "Experiment_ID": "historical" 
         },
         {
