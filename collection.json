@@ -125,6 +125,10 @@
              "href": "doi:10.22033/ESGF/CMIP6.6595"
         },
         {
+         "rel": "collection",
+         "href": "https://landsat-stac.s3.amazonaws.com/landsat-8-l1/catalog.json"
+        },
+        {
           "rel": "item",
           "href": "./simple-item.json",
           "type": "application/geo+json",
