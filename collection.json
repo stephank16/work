@@ -1,5 +1,5 @@
 {
-    "id": "3doi:10.22033/ESGF/CMIP6.6595",
+    "id": "4doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
     "description": "Coupled Model Intercomparison Project Phase 6 (CMIP6) data sets ....",
     "keywords": [
@@ -38,9 +38,9 @@
             "project=CMIP6",
             "institute=MPI-M"
         ],
-         "test":  [
-            "storage=swift",
-            "format=zarr"
+         "landing page":  [
+            "https://cera-www.dkrz.de/WDCC/ui/cerasearch/cmip6?input=CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.historical",
+            "WDCC"
         ],
         "view:off_nadir": {
             "min": 0.2,
