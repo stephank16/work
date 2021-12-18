@@ -41,6 +41,9 @@
             "project=CMIP6",
             "institute=MPI-M"
         ],
+         "sci:doi": [
+          "10.5061/dryad.s2v81.2/27.2"
+         ],
          "landing page":  [
             "https://cera-www.dkrz.de/WDCC/ui/cerasearch/cmip6?input=CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.historical",
             "WDCC"
