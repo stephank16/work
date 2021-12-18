@@ -1,5 +1,5 @@
 {
-    "id": "subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
+    "id": "1subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
     "stac_extensions": [
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
