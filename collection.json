@@ -106,6 +106,12 @@
         },
         {
           "rel": "item",
+          "href": "./items/doi_item.json",
+          "type": "application/geo+json",
+          "title": "Simple Item"
+         },
+      {
+          "rel": "item",
           "href": "./items/item.json",
           "type": "application/geo+json",
           "title": "Simple Item"
