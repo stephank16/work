@@ -87,7 +87,7 @@
         },
         {
             "rel": "child",
-            "href": "./cmip6-mpi/catalog.json",
+            "href": "./colls/catalog.json",
             "title": "MPI-M CMIP6 test1"
         },
         {
@@ -101,14 +101,10 @@
         },
         {
           "rel": "item",
-          "href": "./simple-item.json",
+          "href": "./items/simple-item.json",
           "type": "application/geo+json",
           "title": "Simple Item"
-         },
-      {
-      "rel": "collection",
-      "href": "https://landsat-stac.s3.amazonaws.com/landsat-8-l1/catalog.json"
-    }
+         }
     ],    
     "license": "CC-BY-SA-4.0"
 }
