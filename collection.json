@@ -92,8 +92,8 @@
         },
        {
             "rel": "child",
-            "href": "./colls/collection_dcube.json",
-            "title": "MPI-M CMIP6 test data cube"
+            "href": "./colls/collection.json",
+            "title": "MPI-M CMIP6 test data cube on DKRZ cloud"
         },
         {
             "rel": "self",
