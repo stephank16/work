@@ -87,12 +87,12 @@
         },
         {
             "rel": "child",
-            "href": "./colls/catalog.json",
+            "href": "./colls/collection.json",
             "title": "MPI-M CMIP6 test1"
         },
        {
             "rel": "child",
-            "href": "./colls/catalog_cube.json",
+            "href": "./colls/collection_dcube.json",
             "title": "MPI-M CMIP6 test data cube"
         },
         {
