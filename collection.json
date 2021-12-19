@@ -111,7 +111,11 @@
           "href": "./items/item.json",
           "type": "application/geo+json",
           "title": "Simple Item"
-         }
+         },
+         {
+            "rel": "cite-as",
+            "href": "doi:10.22033/ESGF/CMIP6.6595"
+       }
     ],    
     "license": "CC-BY-SA-4.0"
 }
