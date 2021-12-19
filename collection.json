@@ -1,5 +1,5 @@
 {
-    "id": "2subset_eosc_doi:10.22033/ESGF/CMIP6.6595",
+    "id": "doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
     "stac_extensions": [
     "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
@@ -90,6 +90,11 @@
             "href": "./colls/catalog.json",
             "title": "MPI-M CMIP6 test1"
         },
+       {
+            "rel": "child",
+            "href": "./colls/catalog_cube.json",
+            "title": "MPI-M CMIP6 test data cube"
+        },
         {
             "rel": "self",
             "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
@@ -101,7 +106,7 @@
         },
         {
           "rel": "item",
-          "href": "./items/simple-item.json",
+          "href": "./items/item.json",
           "type": "application/geo+json",
           "title": "Simple Item"
          }
