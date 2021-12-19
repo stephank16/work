@@ -86,9 +86,9 @@
             "type": "application/json"
         },
         {
-            "rel": "child",
+            "rel": "cloud",
             "href": "./colls/collection.json",
-            "title": "MPI-M CMIP6 test1"
+            "title": "MPI-M CMIP6 subset on DKRZ cloud"
         },
        {
             "rel": "child",
@@ -107,24 +107,15 @@
         {
           "rel": "item",
           "href": "./items/doi_item.json",
-<<<<<<< HEAD
-=======
           "type": "application/geo+json",
           "title": "Simple Item"
          },
       {
           "rel": "item",
           "href": "./items/item.json",
->>>>>>> 0fcaf73742ff33a283f05d234be55d17b60ffd15
           "type": "application/geo+json",
           "title": "Simple Item"
-         },
-         {
-            "rel": "item",
-            "href": "./items/item.json",
-            "type": "application/geo+json",
-            "title": "Simple Item"
-        }
+         }
     ],    
     "license": "CC-BY-SA-4.0"
 }
