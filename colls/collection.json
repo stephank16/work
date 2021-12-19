@@ -1,28 +1,13 @@
 {
-    "id": "CMIP6_climate_model_data_colldkrz1",
+    "id": "doi:10.22033/ESGF/CMIP6.6595",
     "stac_version": "1.0.0",
-    "description": "Analysis ready CMIP6 climate model data hosted at DKRZ (cloud storage)",
-    "links": [
-        {
-            "rel": "root",
-            "href": "./collection.json",
-            "type": "application/json"
-        },
-        {
-            "rel": "child",
-            "href": "./cmip6-mpi/catalog.json",
-            "title": "Hurricane Harvey"
-        },
-        {
-            "rel": "self",
-            "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
-            "type": "application/json"
-        }
+    "stac_extensions": [
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
     ],
-    "title": "CMIP6 Data",
+    "description": "Coupled Model Intercomparison Project Phase 6 (CMIP6) data sets ....",
     "keywords": [
         "CMIP6",
-        "open"
+        "climate"
     ],
     "providers": [
         {
@@ -43,64 +28,88 @@
             "url": "https://www.planet.com/disasterdata/"
         },
         {
-            "name": "Google Cloud Platform",
-            "description": "Hosting is done on a GCP storage bucket owned by the Planet Disaster Data team",
+            "name": "DKRZ Cloud Platform",
+            "description": "Hosting is done on the institutional DKRZ swift cloud",
             "roles": [
                 "host"
             ],
-            "url": "https://storage.googleapis.com/pdd-stac/"
+            "url": "https://swift.dkrz.de/a1lakjflajk"
         }
     ],
     "summaries": {
-        "constellation": [
-            "skysat",
-            "planetscope"
+        "mip_era": [ "CMIP6" ],
+         "Activity_id": [ "CMIP6" ],
+         "Institution_ID": [ "MPI-M" ],
+         "Source_ID": [ "MPI-ESM1-2-LR" ],
+         "Experiment_ID": [ "historical" ],
+         "sci:doi": [
+          "10.22033/ESGF/CMIP6.6595"
+         ],
+         "landing page":  [
+            "https://cera-www.dkrz.de/WDCC/ui/cerasearch/cmip6?input=CMIP6.CMIP.MPI-M.MPI-ESM1-2-LR.historical",
+            "WDCC"
         ],
-        "platform": [
-            "SS02",
-            "SSC1",
-            "101c"
-        ],
-        "view:off_nadir": {
-            "min": 0.2,
-            "max": 27.3
-        },
-        "view:sun_elevation": {
-            "min": 56.3,
-            "max": 65.1
-        },
-        "view:sun_azimuth": {
-            "min": 122,
-            "max": 231.9
-        },
-        "eo:gsd": {
-            "min": 0.9,
-            "max": 3.7
-        },
-        "eo:cloud_cover": {
-            "min": 0,
-            "max": 24
+         "eo:bands": [
+        {
+          "mip_era": "CMIP6",
+          "Activity_id": "CMIP6",
+          "Institution_ID": "MPI-M",
+          "Source_ID": "MPI-ESM1-2-LR",
+          "Experiment_ID": "historical" 
         }
+      ]
     },
     "extent": {
         "spatial": {
             "bbox": [
                 [
-                    -96,
-                    28,
-                    -93,
-                    31
+               -180,
+                -90,
+                180,
+                90
                 ]
             ]
         },
         "temporal": {
             "interval": [
                 [
-                    "2017-08-28T10:00:00-08:00",
-                    null
+                      "1980-01-01T00:00:00Z",
+                      "2009-12-31T23:59:59Z"
                 ]
             ]
         }
     },
+ "links": [
+        {
+            "rel": "root",
+            "href": "./collection.json",
+            "type": "application/json"
+        },
+        {
+            "rel": "child",
+            "href": "./colls/catalog.json",
+            "title": "MPI-M CMIP6 test1"
+        },
+       {
+            "rel": "child",
+            "href": "./colls/catalog_cube.json",
+            "title": "MPI-M CMIP6 test data cube"
+        },
+        {
+            "rel": "self",
+            "href": "https://raw.githubusercontent.com/stephank16/work/master/collection.json",
+            "type": "application/json"
+        },
+        {
+             "rel": "cite-as",
+             "href": "doi:10.22033/ESGF/CMIP6.6595"
+        },
+        {
+          "rel": "item",
+          "href": "./items/item.json",
+          "type": "application/geo+json",
+          "title": "Simple Item"
+         }
+    ],    
     "license": "CC-BY-SA-4.0"
 }
