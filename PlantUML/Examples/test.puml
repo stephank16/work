@@ -1,0 +1,15 @@
+@startuml
+
+skinparam component {
+    BackgroundColor<<**FDOF Typing System**>> LightBlue
+    BackgroundColor<<**Metadata Record**>> LightGray 
+    BackgroundColor<<**Identifier**>> LightGray
+    BackgroundColor<<**Digital Object**>> LightGreen
+}
+
+
+component A <<**FDOF Typing System**>>{
+ port a1
+}
+
+@enduml

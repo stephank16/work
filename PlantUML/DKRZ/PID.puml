@@ -1,0 +1,90 @@
+@startuml
+circle PID1
+
+object PID1_Kernel_Info {
++ **URL** : "https://handle-esgf.dkrz.de/lp/21.14100/.."
++ **AGGREGATION_LEVEL** : "FILE"
++ **FIXED_CONTENT** : TRUE
++ **FILE_NAME** : drs_file_name.nc
++ **IS_PART_OF** : hdl:21.14100/481..
++ **FILE_VERSION** : 1
++ **CHECKSUM** : 8f714d056dc5857
++ **CHECKSUM_METHOD** : SHA256
++ **URL_ORIGINAL_DATA** : <locations> .. </locations>
+==
++ **Metadata** : "hdl:2114100/..."
+} 
+
+object PID2_Kernel_Info {
++ **URL** : "https://handle-esgf.dkrz.de/lp/21..."
++ **AGGREGATION_LEVEL** : "DATASET"
++ **FIXED_CONTENT** : TRUE
++ **DRS_ID** : CMIP6.facet1.facet2..
++ **HAS_PARTS** : [PID1,PID3,PID4,...]
++ **VERSION_NUMBER** : 20190710
++ **HOSTING_NODE** : <locations> .. <locations>
++ **IS_PART_OF** : doi:10.22033/ESGF/CMIP6.4403
++ **COMMENT** : "Added DOI on 2022....M. Buurman, DKRZ"
+==
++ **Metadata** : "hdl:2114100/..."
+}
+
+
+class PID_KIP {
++ **URL** : STRING
++ **AGGREGATION_LEVEL** : "FILE" or "DATASET"
++ **FIXED_CONTENT** : TRUE
++ **IS_PART_OF** : PID / 'hdl or doi'
+..
++ **FILE_NAME** : STRING
++ **FILE_VERSION** : NUMBER
++ **CHECKSUM** : STRING
++ **CHECKSUM_METHOD** : STRING / SHA256 or ..
++ **URL_ORIGINAL_DATA** : XML_STRING
++ **URL_REPLICA_DATA** : XML_STRING
+..
++ **DRS_ID** : STRING / .structured
++ **VERSION_NUMBER** : DATE_STRING
++ **HOSTING_NODE** : XML_STRING
++ **HAS_PARTS** : List of PIDs 
++ **REPLICA_NODE** : XML_STRING
++ **_REMOVED_ERRATA_IDS** : STRING / ?structure?
++ **_ADDED_ERRATA_IDS** : STRING
++ **COMMENT** : STRING
+==
++ **Metadata** : PID
+}
+
+object M_PID_Kernel_Info {
++ **MD_SCHEMA** : STAC
++ **MD_CATALOG** : https:....
++ **MD_CATALOG_Service_Type** : STRING / e.g. OAI, REST, OGC ..
++ **MD_API** : https://
++ **MD_ID** : "a.b.c.d"
++ **external_repr** : [PID1,PID2,..]
++ **external_repr_t** : [DCAT,ESGF,DIF]
+}
+
+
+class M_PID_KIP { 
++ **MD_SCHEMA**: STRING
++ **MD_CATALOG**: URI
++ **MD_API**: URI
++ **MD_ID** : STRING
++ **external_repr** : Ordered LIST of PIDs
++ **external_repr_t** : Ordered LIST of STRINGS
+}
+
+M_PID_Kernel_Info --> M_PID_KIP : adheres_to Profile
+PID1 --> PID1_Kernel_Info
+
+PID1_Kernel_Info --> PID_KIP : adheres_to Profile
+PID2_Kernel_Info --> PID_KIP : adheres_to Profile
+PID1_Kernel_Info::IS_PART_OF ..> PID2_Kernel_Info
+
+PID1_Kernel_Info::Metadata ..> M_PID_Kernel_Info 
+PID2_Kernel_Info::Metadata ..> M_PID_Kernel_Info
+
+M_PID_Kernel_Info::external_repr ..> M_PID_Kernel_Info
+
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+sprite $businessProcess [16x16/16] {
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFF00FFFF
+FF00000000000FFF
+FF000000000000FF
+FF00000000000FFF
+FFFFFFFFFF00FFFF
+FFFFFFFFFF0FFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFF
+}
+
+ rectangle "Message Queue" <<$businessProcess>>
+
+package "ESGF Data Node" {
+[Publisher] 
+database "Model Data"
+}
+
+package "Fed Search Node 1" {
+
+   
+    publishAPI1 - [PUB_Recv1]
+    [MQ_Consumer1] 
+    
+    package STAC_FastAPI {
+      database "Index1"
+      [Index1] -right- STAC_API1
+   
+    }
+
+    [PUB_Recv1] -u..> [Message Queue]
+    [MQ_Consumer1] ..> [STAC_API1]
+}
+
+package "Fed Search Node 2" {
+
+    publishAPI2 - [PUB_Recv2]
+    [MQ_Consumer2]
+
+    package STAC_FASTAPI2 {
+    database "Index2"
+    [Index2] -right- STAC_API2
+}
+    [MQ_Consumer2] ..> [STAC_API2]
+    [PUB_Recv2] -u..> [Message Queue]
+}
+
+[Publisher] -r- [Model Data]
+[Publisher] -d..>publishAPI1
+
+[Message Queue] ..> [MQ_Consumer1]
+[Message Queue] ..> [MQ_Consumer2]
+@enduml
+
+
+

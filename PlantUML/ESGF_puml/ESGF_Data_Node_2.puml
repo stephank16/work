@@ -1,0 +1,81 @@
+@startuml
+!include <archimate/Archimate>
+
+LAYOUT_LEFT_RIGHT()
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam wrapWidth 160
+skinparam nodesep 70
+skinparam ranksep 55
+skinparam linetype ortho
+
+title Clean ESGF Platform - ArchiMate View\nOption 2: Left-to-right workflow layout
+
+' Columns are ordered from source to consumption.
+package "1. Data Production" {
+  Business_Process(Data_Producers, "Data Producers") {
+    Technology_Node(MODELING_CENTRES, "Modelling\nCentres")
+    Application_DataObject(CLIMATE_DATA, "Climate\nData")
+    Business_Process(STANDARDIZATION, "Data\nStandardization")
+  }
+}
+
+package "2. Data Provider" {
+  Application_Component(ESGF_DataNode, "ESGF Data Provider") {
+    Technology_Node(PUBLISHER, "Data Publisher") {
+      Application_Component(QAQC, "QA/QC")
+    }
+
+    Technology_Node(DATANODE, "ESGF Data Node") {
+      Application_DataObject(PUBLISHED_DATA, "Published\nData")
+      Technology_Node(DAS, "Data Access\nServices")
+      DataAccess - DAS
+      AccessLog -. DAS
+    }
+  }
+}
+
+package "3. Discovery & Access" {
+  Application_Component(INDEX, "ESGF Index Node") {
+    Technology_Node(SEARCH_INDEX, "Search\nIndex")
+    Application_DataObject(METADATA, "Metadata")
+    SearchInterface - SEARCH_INDEX
+  }
+
+  Application_Component(CLIENT, "Client\nSoftware")
+}
+
+package "4. Governance & Analytics" {
+  Business_Role(GOV, "Governance")
+  Business_Object(CV, "Controlled\nVocabularies")
+  Technology_Service(ESGVOC, "ESGVOC\nVocabulary Service")
+
+  Application_Component(STATS, "Usage Statistics\nand Analytics") {
+    Technology_Node(STAT_COLLECTOR, "Statistics\nCollector")
+    Application_DataObject(USAGE_METRICS, "Usage\nMetrics")
+  }
+}
+
+' Main path: production -> publishing -> access/discovery -> client.
+Rel_Flow(MODELING_CENTRES, CLIMATE_DATA)
+Rel_Flow(CLIMATE_DATA, STANDARDIZATION)
+Rel_Flow(STANDARDIZATION, QAQC)
+Rel_Flow(QAQC, PUBLISHED_DATA)
+Rel_Flow(PUBLISHED_DATA, DAS, "exposes\ndatasets")
+Rel_Serving(DataAccess, CLIENT, "serves\ndata access")
+
+Rel_Flow(PUBLISHER, INDEX, "publishes\nmetadata")
+Rel_Access(SEARCH_INDEX, METADATA, "indexes")
+Rel_Serving(SearchInterface, CLIENT, "supports\ndiscovery")
+
+' Supporting relationships.
+Rel_Composition(DATANODE, PUBLISHER)
+Rel_Assignment(GOV, CV, "governs")
+Rel_Access(ESGVOC, CV, "uses")
+Rel_Serving(ESGVOC, PUBLISHER, "provides\nvocabularies")
+Rel_Access(CV, QAQC, "used by")
+Rel_Access(CV, STANDARDIZATION, "used by")
+Rel_Flow(AccessLog, STATS, "usage\nmetrics")
+Rel_Access(STAT_COLLECTOR, USAGE_METRICS, "analyzes")
+
+@enduml

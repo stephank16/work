@@ -1,0 +1,39 @@
+@startuml
+
+title Helmholtz PID Kernel Information Profile
+
+
+object File_or_Dataset_PID 
+
+
+class Helmholtz_KIP {
++ **kernelInformationProfile** : PID :: 1 (mandatory)
++ **digitalObjectType** : PID :: 1 (mandatory)
++ **digitalObjectLocation** : URL :: 1+ (m and repeatable) 
++ **digitalObjectLocationAccessProtocol** : String :: 0/1 (optional)
++ **dateCreated** : ISO Date/Time :: 1 (mandatory) 
++ **dateModified** : ISO Date/Time :: 1 (mandatory) 
++ **underEmbargoUntil** : ISO Date/Time :: 0/1 (optional)
++ **version** : Integer or String :: 0/1 (optional,mandatory if predecessor) 
++ **license** : URL :: 1r (recommended)
++ **checksum** : Formatted String (datatype for this) :: 1 (mandatory if applicable) 
++ **signature** : analog mail standard :: 0+ (opt and repeatable)
++ **topic** : controlled vocabulary :: 0+ (opt and repeatable) 
++ **locationPreview/Sample** : URL :: 0+ (opt and repeatable)
++ **contact** : URL :: 0+ (opt and repeatable)
++ **hasMetadata** : PID :: 0+ (opt and repeatable)
++ **isMetadataFor** : PID :: 0/1 (optional) 
++ **wasGeneratedBy** : PID :: 0/1 (optional) --> Activity !!
++ **specializationOf** : PID :: 0+ (opt and repeatable)
++ **wasRevisionOf** : PID :: 0+ (opt and repeatable)
++ **hadPrimarySource** : PID :: 0+ (opt and repeatable)
++ **wasQuotedFrom** : PID :: 0+ (opt and repeatable) --> Subset !!
++ **alternateOf** : PID :: 0+ (opt and repeatable) --> Replica? !!
++ **provenanceGraph** : PID :: 0/1 (optional)
+
+}
+
+
+File_or_Dataset_PID --> Helmholtz_KIP : adheres_to Profile
+
+center footer derived from https://oceanrep.geomar.de/id/eprint/57942/7/2022-12_HMC-Paper_2_PID-KIP_V1.pdf/n (S.Kindermann 20.07.2023)

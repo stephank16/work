@@ -1,0 +1,79 @@
+@startuml
+
+title CMIP6 PID Kernel Information Profile
+
+
+object File_or_Dataset_PID1 
+
+object Dataset_or_DOI_PID1
+
+object File_PIDs {
+    List of PIDS
+} 
+
+
+object Metadata_PID1
+
+class PID_KIP {
++ **URL** : STRING
++ **AGGREGATION_LEVEL** : "FILE" or "DATASET"
++ **FIXED_CONTENT** : TRUE
++ **IS_PART_OF** : PID / 'hdl or doi'
+..
++ **FILE_NAME** : STRING
++ **FILE_VERSION** : NUMBER
++ **CHECKSUM** : STRING
++ **CHECKSUM_METHOD** : STRING / SHA256 or ..
++ **URL_ORIGINAL_DATA** : XML_STRING
++ **URL_REPLICA_DATA** : XML_STRING
+..
++ **DRS_ID** : STRING / .structured
++ **VERSION_NUMBER** : DATE_STRING
++ **HOSTING_NODE** : XML_STRING
++ **HAS_PARTS** : List of PIDs 
++ **REPLICA_NODE** : XML_STRING
++ **_REMOVED_ERRATA_IDS** : STRING / ?structure?
++ **_ADDED_ERRATA_IDS** : STRING
++ **COMMENT** : STRING
+==
++ Metadata : PID
+}
+
+
+
+class M_PID_KIP { 
++ **MD_SCHEMA**: STRING
++ **MD_CATALOG**: URI
++ **MD_API**: URI
++ **MD_ID** : STRING
++ **external_repr** : Ordered LIST of PIDs
++ **external_repr_t** : Ordered LIST of STRINGS
+}
+
+File_or_Dataset_PID1 --> PID_KIP : adheres_to Profile
+
+
+PID_KIP::IS_PART_OF ..> Dataset_or_DOI_PID1
+PID_KIP::HAS_PARTS ..> File_PIDs
+
+
+PID_KIP::Metadata ..> Metadata_PID1
+
+Metadata_PID1 --> M_PID_KIP : adheres_to Profile
+
+note right of PID_KIP
+  currently no PID for 
+  community specific metadata object 
+  associated to data object
+  (indicated by "Metadata" attribute)
+
+  community specific info
+  important to work with data
+  should go there !!
+ 
+  --> Kernel Info Profile for this also necessary ?!
+end note
+
+
+
+@enduml

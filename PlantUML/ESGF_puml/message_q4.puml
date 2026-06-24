@@ -1,0 +1,16 @@
+
+
+@startuml
+[Publisher] ..> stac_API
+[STAC] -up-> stac_API
+[STAC] ..> pub
+[Message Queue] -up-> pub
+[Message Queue] -down-> sub
+[Index] -up..> sub
+note left of [Publisher]
+phils diagram
+ESGFconf Washington
+end note
+@enduml
+
+

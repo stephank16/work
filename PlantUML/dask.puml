@@ -1,0 +1,59 @@
+@startuml
+skinparam DefaultTextAlignment Center
+skinparam ranksep 10
+
+frame site1 {
+
+interface dask_gw1
+interface wps1
+component "compute\ncluster" as cluster1
+database "database includes\ndata from\nensemble\nA" as data1
+
+dask_gw1 -- cluster1
+wps1 -- cluster1
+cluster1 -- data1
+
+}
+frame site2 {
+
+interface dask_gw2
+interface wps2
+component "computer\ncluster" as cluster2
+database "database includes\ndata from\nensemble\nB" as data2
+
+dask_gw2 -- cluster2
+wps2 -- cluster2
+cluster2 -- data2
+
+}
+
+frame site3 {
+    interface subset
+    component "Server\nSystems" as cluster3
+    database "Earth Observation\nData" as eodata
+    subset -- cluster3
+    cluster3 -- eodata
+}
+
+actor user1
+
+rectangle dask [
+    f(A,B) = g(A)-h(B)
+]
+user1 -- dask
+dask -- dask_gw1
+dask -- dask_gw2
+
+actor user2
+
+rectangle script [
+    extract observations from site3
+    extract pseudo-obs from ensemble B
+    compare 
+]
+
+user2 -- script
+script -- wps2 
+script -- subset
+
+@enduml

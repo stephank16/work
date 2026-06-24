@@ -1,0 +1,20 @@
+@startuml
+
+skinparam component {
+    BackgroundColor<<**FDOF Typing System**>> LightBlue
+    BackgroundColor<<**Metadata Record**>> LightGray 
+    BackgroundColor<<**Identifier**>> LightGray
+    BackgroundColor<<**Digital Object**>> LightGreen
+}
+
+
+[type] <<**FDOF Typing System**>> as type
+[metadata] <<**Metadata Record**>> as metadata 
+[pid] <<**Persistent ID**>> as pid
+[do] <<**digital object**>> as do
+
+
+pid --> do : Identifies
+metadata --> do : Describes
+type --> do : Characterises
+@enduml

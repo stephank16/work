@@ -1,0 +1,31 @@
+@startuml
+
+
+cloud cloud
+rectangle catalogs {
+file intake_catalog
+}
+control gen
+control ingest
+storage file_system
+actor data_manager
+actor data_analysis
+actor data_discovery
+
+
+database global_index
+interface catalog_API
+
+
+file_system -d-> gen
+cloud -d-> gen
+gen -d-> intake_catalog
+intake_catalog -> ingest
+ingest -> global_index
+global_index - catalog_API
+gen - data_manager
+data_manager - ingest
+data_analysis -u-> catalog_API
+data_analysis -u-> intake_catalog
+data_discovery -u-> catalog_API
+@enduml

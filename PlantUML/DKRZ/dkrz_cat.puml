@@ -1,0 +1,98 @@
+@startuml data_catalog_perspectives
+
+title Data catalog perspectives
+
+note "transient data object management \ne.g. grib, zarr\ndirect data generation \n workflow integration" as trans_note
+actor data_discovery
+
+package model_data_gen #AliceBlue{
+   
+    actor data_producer
+    collections ".."
+    file input_data
+    
+    control model_run
+    input_data -d-> model_run
+}
+
+package external_model_data_sink #AliceBlue{
+    database partner_site
+    cloud data_lake
+}
+
+note "analysis ready data catalog \n direct analysis wflow integration \n e.g. intake, FREVA" as da_note
+package datastream_store #AliceBlue {
+    actor workflow_manager
+    storage parallel_file_system
+    database FDB 
+    cloud ZARR_backend
+    database wflow_catalog  #LightSkyBlue 
+    wflow_catalog .. trans_note
+    parallel_file_system -d- FDB
+    FDB -d- ZARR_backend
+    ZARR_backend -- parallel_file_system
+    storage HSM_raw
+    wflow_catalog .u. workflow_manager
+}
+
+model_run --> datastream_store 
+
+workflow_manager .. external_model_data_sink
+
+package analysis_data_store #PaleGreen {
+    actor data_analysis
+    database analysis_data_catalog #LightSkyBlue
+    storage analysis_file_system
+    database analysis_FDB 
+    cloud ZARR_cloud_ready
+    storage HSM_analysis
+    analysis_file_system -d- analysis_FDB
+    analysis_FDB -d- ZARR_cloud_ready
+    ZARR_cloud_ready -- analysis_file_system
+
+}
+analysis_data_catalog .. da_note 
+datastream_store -u-> external_model_data_sink
+datastream_store -d-> analysis_data_store
+data_analysis .. analysis_data_catalog
+
+note " discoverability of core ESM data collections \n e.g. in EOSC, WMO, Copernicus etc. " as earth_note
+
+package earth_science_community #LightSeaGreen{
+    collections external_data_sources
+    collections external_data_sinks
+    database external_data_portals
+    external_data_portals --[hidden]> external_data_sinks
+    external_data_portals --[hidden]> external_data_sources
+
+}
+
+external_data_portals .. earth_note
+
+analysis_data_store --> community_data_store
+
+note "data discovery \n curated stable data collections \n persistent references with tombstones \n citation \n community API e.g. STAC, ESGF, WDCC/CERA \n " as c_note
+package community_data_store #LightGray{
+
+cloud analysis_ready_data
+storage curated_published_data
+    
+database community_data_catalog #LightSkyBlue
+actor data_manager
+rectangle archived_data {
+    storage HSM_curated
+}
+archived_data <-u-> curated_published_data
+archived_data <-u-> analysis_ready_data
+}
+community_data_catalog .. c_note
+
+
+data_manager .. community_data_catalog
+
+
+data_discovery -u-> community_data_catalog
+community_data_store -> earth_science_community
+
+
+@enduml

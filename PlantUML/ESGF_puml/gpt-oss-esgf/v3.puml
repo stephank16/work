@@ -1,0 +1,79 @@
+@startuml
+!include <archimate/Archimate>
+
+LAYOUT_LEFT_RIGHT()
+
+title Clean ESGF Platform - ArchiMate View
+
+'--- Skin parameters -------------------------------------------------------
+skinparam ArchimateBusinessRoleBackgroundColor #D6EAF8
+skinparam ArchimateBusinessObjectBackgroundColor #D6EAF8
+skinparam ArchimateApplicationComponentBackgroundColor #ABEBC6
+skinparam ArchimateTechnologyNodeBackgroundColor #FADBD8
+skinparam ArchimateTechnologyServiceBackgroundColor #D7BDE2
+skinparam ArchimateElementBorderColor #333333
+
+'--- Business Layer -------------------------------------------------------
+Business_Role(GOV, "Governance")
+Business_Object(CV, "Controlled Vocabularies")
+
+'--- Application Components -----------------------------------------------
+Application_Component(INDEX, "ESGF Index Node") {
+    Technology_Node(SEARCH_INDEX,"Search Index")
+    Application_DataObject(METADATA, "Metadata")
+}
+Application_Component(STATS, "Usage Statistics and Analytics"){
+  Technology_Node(STAT_COLLECTOR, "Statistics Collector")
+  Application_DataObject(USAGE_METRICS, "Usage Metrics")
+}
+
+Application_Component(CLIENT, "Client Software")
+
+'--- ESGF Data Provider -----------------------------------------------
+Application_Component(ESGF_DataNode,"ESGF-DataProvider") {
+    Technology_Node(DATANODE, "ESGF Data Node"){
+        Application_DataObject(PUBLISHED_DATA, "Published Data")
+        Technology_Node(DAS, "Data Access Services")
+        DataAccess - DAS
+        AccessLog -. DAS
+    }
+    Technology_Node(PUBLISHER, "Data Publisher"){
+      Application_Component(QAQC, "QA/QC")
+    }
+}
+
+'--- Production Process -----------------------------------------------
+Business_Process(Data_Producers,"Data Producers")  {
+  Technology_Node(MODELING_CENTRES, "Modelling Centres")
+  Application_DataObject(CLIMATE_DATA, "Climate Data")
+  Business_Process(STANDARDIZATION, "Data Standardization")
+}
+
+'--- Service Layer ---------------------------------------------------------
+Technology_Service(ESGVOC, "ESGVOC Vocabulary Service")
+
+'--- Relations -------------------------------------------------------------
+Rel_Assignment(GOV, CV, "governs")
+Rel_Serving(ESGVOC, PUBLISHER, "provides vocabularies")
+Rel_Access(ESGVOC, CV, "uses")
+Rel_Access(CV,QAQC, "uses")
+Rel_Access(CV,STANDARDIZATION, "uses")
+
+Rel_Composition(DATANODE, PUBLISHER)
+
+Rel_Serving(DataAccess, CLIENT)
+
+Rel_Flow(PUBLISHER, INDEX, "publishes metadata")
+Rel_Access(SEARCH_INDEX, METADATA, "indexes")
+Rel_Serving(SearchInterface, CLIENT, "supports discovery")
+
+Rel_Flow(AccessLog, STATS, "usage metrics")
+Rel_Access(STAT_COLLECTOR, USAGE_METRICS, "analyzes")
+
+Rel_Flow(MODELING_CENTRES,CLIMATE_DATA)
+Rel_Flow(CLIMATE_DATA,STANDARDIZATION)
+Rel_Flow(STANDARDIZATION,QAQC)
+Rel_Flow(QAQC,PUBLISHED_DATA)
+Rel_Flow(PUBLISHED_DATA, DAS, "exposes datasets")
+@enduml
+
