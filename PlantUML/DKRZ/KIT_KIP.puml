@@ -37,3 +37,4 @@ class Helmholtz_KIP {
 File_or_Dataset_PID --> Helmholtz_KIP : adheres_to Profile
 
 center footer derived from https://oceanrep.geomar.de/id/eprint/57942/7/2022-12_HMC-Paper_2_PID-KIP_V1.pdf/n (S.Kindermann 20.07.2023)
+@enduml
