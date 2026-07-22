@@ -1,0 +1,15 @@
+{
+    "favorites.groups": [
+        "Default",
+        "Repos"
+    ],
+    "favorites.currentGroup": "Repos",
+    "favorites.resources": [
+        {
+            "filePath": "PlantUML",
+            "group": "Repos"
+        }
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+}
